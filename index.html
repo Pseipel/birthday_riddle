@@ -1,6 +1,216 @@
-<link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+<html lang="en"><head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - CSS Combination Lock </title>
+  
+<style>
+body {
+  background: #222;
+}
+.myCenter {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  height:390px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.myLock {
+  display: inline-block;
+  text-align: center;
+  height: 310px;
+  padding: 40px 50px 40px 50px;
+  margin: auto;
+  background: white;
+  background: linear-gradient(white, #DCD3CA);
+  border-radius: 25px;
+  box-shadow: inset 0 -4px 4px #B1AAA1, 0 20px 40px rgba(0, 0, 0, 0.5), 0 2px 5px 1px rgba(0, 0, 0, 0.7);
+}
+.myLock .lockInset {
+  display: inline-block;
+  position: relative;
+  padding: 23px;
+  background: linear-gradient(white, #DCD3CA);
+  border-radius: 15px;
+  box-shadow: inset 0 -8px 4px -4px #B1AAA1, 0 7px 10px rgba(0, 0, 0, 0.07), 0 14px 10px rgba(0, 0, 0, 0.07), 0 20px 10px rgba(0, 0, 0, 0.07), 0 27px 10px rgba(0, 0, 0, 0.07), 0 34px 10px rgba(0, 0, 0, 0.07), 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.myLock .lockLine {
+  position: absolute;
+  margin: auto -23px;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  height: 4px;
+  background: linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px, transparent 3px, rgba(0, 0, 0, 0.3) 3px);
+}
+.myLock .lockWrapper {
+  text-align: center;
+  position: relative;
+  background: rgba(0,0,0,0.85);
+  background: linear-gradient(black 13%, #403C3A, black 75%, #110C14, black 85%);
+  border-radius: 8px;
+  height: 150px;
+  box-shadow: inset 0 0 10px 2px black;
+}
+.myLock .dial {
+  display: inline-block;
+  vertical-align: top;
+  height: 150px;
+  width: 84px;
+  padding-top: -50px;
+  margin: 0px 7px;
+  background: linear-gradient(#000000 0%, #000006 3%, #08000d 4%, #292527 7%, #55514c 9%, #847f76 11%, #979289 12%, #bab3a9 15%, #d9cfc6 17%, #f4eae1 19%, #fff4ec 20%, #fffffc 22%, #ffffff 24%, #fffffe 33%, #fffdf5 35%, #fef3eb 37%, #d4ccc2 45%, #ada69d 54%, #726d66 65%, #595550 71%, #4f4b47 74%, #4b4743 76%, #4b4743 79%, #4f4b47 80%, #6a665f 84%, #6d6861 85%, #6a665f 88%, #65605a 89%, #54504b 91%, #0d0711 98%, #02000a 99%, #000004 100%);
+  border: 5px solid rgba(0, 0, 0, 0.25);
+  border-top: none;
+  border-bottom: none;
+  border-left-image: linear-gradient(white, black);
+  overflow: hidden;
+  font-size: 45px;
+  font-family: arial;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 -1px 0 rgba(0, 0, 0, 0.5), 0 -2px 0 rgba(255, 255, 255, 0.1);
+  color: #827D74;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 8px 10px rgba(0, 0, 0, 0.2), 0 13px 10px rgba(0, 0, 0, 0.2);
+}
+.myLock .dial ol {
+  display: inline;
+  position: relative;
+  top: -50px;
+}
+.myLock .dial ol li {
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+  display: block;
+  margin: 0 auto;
+  height: 51px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.myLock .shadow {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  background: linear-gradient(black 5%, transparent 40%, transparent 60%, black 100%);
+  border-radius: 8px;
+  height: 150px;
+  width: 100%;
+}
+.myLock .btnEnter {
+  font-size: 45px;
+  font-family: arial;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 -1px 0 rgba(0, 0, 0, 0.5), 0 -2px 0 rgba(255, 255, 255, 0.1);
+  color: #333;
+  cursor: pointer;
+  margin: auto;
+  width: 350px;
+  height: 50px;
+  margin-top: 15px;
+  display: block;
+  padding: 23px;
+  background: linear-gradient(white, #DCD3CA);
+  border-radius: 15px;
+  border: 1px solid #999;
+  box-shadow: inset 0 -8px 4px -4px #B1AAA1, 0 7px 10px rgba(0, 0, 0, 0.07), 0 14px 10px rgba(0, 0, 0, 0.07), 0 20px 10px rgba(0, 0, 0, 0.07), 0 27px 10px rgba(0, 0, 0, 0.07), 0 34px 10px rgba(0, 0, 0, 0.07), 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.myLock .btnEnter:active {
+  font-size: 44px;
+  background: linear-gradient(white, #DCD3CA);
+  border-radius: 15px;
+  border: 1px solid #999;
+  vertical-align: -5px;
+  box-shadow: inset 0 7px 10px rgba(0, 0, 0, 0.07), inset 0 14px 10px rgba(0, 0, 0, 0.07), inset 0 20px 10px rgba(0, 0, 0, 0.07), inset 0 27px 10px rgba(0, 0, 0, 0.07), inset 0 34px 10px rgba(0, 0, 0, 0.07), inset 0 2px 3px 1px rgba(0, 0, 0, 0.5), inset 0 -8px 4px -4px #B1AAA1;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet" type="text/css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="myCenter">
-  <div id='lock' data-dials='3'></div>
-</div>
+    <div id='lock' data-dials='3'></div>
+  </div>    
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script id="rendered-js">
+(function( $ ) {
+  $.fn.makeLock = function(dialNum){ 
+      console.clear()
+      var combo
+      var dials        = dialNum || $(this).attr('data-dials') || 3
+      var lock         = $(this).addClass('myLock')
+      
+      lock.append('<div class="lockInset">'
+                      +'<div class="lockLine"></div>'
+                      +'<div class="lockWrapper"></div>'
+                    +'</div>')
+      
+      var enterBTN    = $('<div class="btnEnter button">Enter</div>').appendTo(lock)
+      var lockWrapper = lock.find('.lockWrapper')
+      
+      for(var i = 0; i< dials; i++){
+        var dial = $( '<div class="dial"><ol></ol></div>').appendTo(lockWrapper)
+        var slider = dial.find('ol')
+        for(var n = 0; n < 10; n++){
+          slider.append('<li>'+n+'</li>')
+        }
+        slider.prepend( slider.find('li:last-child') )
+      }
+      lockWrapper.append('<div class="shadow"></div>')
+
+      var dialMove    = function(e){
+        $(this).append( $('li:first-child', this))
+        TweenLite.fromTo(this, 0.35, {top:0}, {top:-50,ease: Power2.easeOut})
+      }
+      lock.find('ol').on('click', dialMove)
+
+      var checkLock = function(e){
+        combo = ''
+        lock.find('li:nth-child(2)').each( function(){
+          combo += $(this).text()
+        })
+        console.log(combo)
+      }      
+      enterBTN.on('click', checkLock)
+    }
+}( jQuery ));
+
+$("#lock").makeLock()
+</script>
+ 
+</body></html>
